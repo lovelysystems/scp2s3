@@ -1,0 +1,11 @@
+Banner none
+AllowUsers upload
+AllowTCPForwarding no
+X11Forwarding no
+
+PermitRootLogin no
+ChallengeResponseAuthentication no
+PasswordAuthentication no
+AuthorizedKeysFile /etc/ssh/authorized_keys
+
+UseDNS no

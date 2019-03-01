@@ -1,0 +1,29 @@
+version: "3.7"
+
+secrets:
+  # example host key for testing
+  ssh_host_rsa_key:
+    file: ./secrets/ssh_host_rsa_key
+
+services:
+  uploader:
+    image: lovelysystems/scp2s3:dev
+    hostname: localhost
+    environment:
+      # The authorized keys allowed to upload content
+      AUTHORIZED_KEYS: |
+        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDAelBJ5bEq2TxSWxSIkXc0nhUrjpdxNzbfct4d77KayHlDWHketmUudeg99qB1eTP+tVMLnPcPeUucTZ1QGLZOyFufUlHNlMdW+fA0JN2N9ExLpKFL3pi10GbbgfHlMuqq0yvw3L27Yk/qSQQYgbmjfMefh7O8jFWjTdJ/gABS4g1+3LSHuE/7tLJ2xUZhjSK51MdLu7RbkaHz2DOZ79V1HQW5wYqos/rJwjcDXGC/IMRfvJpn9Tx/NOU8Q77CWCDMdfeuJ1TJo9/+VCzV3ccK0taTfi9cO9rJsgFcgmMcR1P8yvW8+im36OCLmnOeZ+8xtEa4oKiXd6/xd3s5NBg1qV2d83e5tzwG8mxVcOoUIbUfGPzhwRZVt6sYD1c8frkDmR58E26cZiNlNOXw6aP8kEK9cI1LJQYN0SjPc42OYAUlsm+Js3zRDqyImf2C3+fdM8PqT7tfJI9Hgi10WUbq3oWbeZnoghEW0qH33+R2b6l7w3ruV7LS2Lig/Ls5QKhN7QXwIHWbkSfdkgDRzsr8mWko27F0BULlJirWhn3qGBe5zattHuXlnpgyL5Pt5tzdzTEHFTnvHU/rx7n1RQqTRj9EHpI7biYZhnEs+Jjascz5Eo0K0wahLCKPy1/i6xMvLyt+56I4JSgVcps3DcVAyRWdwJuNV1q81RT8he5sAQ== example
+      # aws credentials in this example taken fron the host environment
+      AWS_ACCESS_KEY_ID: "$AWS_ACCESS_KEY_ID"
+      AWS_SECRET_ACCESS_KEY: "$AWS_SECRET_ACCESS_KEY"
+      # pattern to convert the input filename to an output host absolute path on s3 including the bucket
+      # e.g: x.tgz -> /some-bucket/x.tgz
+      # if the output of: sed -nE $PATH_PATTERN  returns a non empty string it is used as target path
+      # and the file will be uploaded and deleted after the upload
+      # if no output is generated the file will not be uploaded but kept locally
+      PATH_PATTERN: 's#^(.*)$$#/some-bucket/\1#p'
+    secrets:
+      - ssh_host_rsa_key
+    ports:
+      - "1022:22"
+      - "9001:9001"
