@@ -12,7 +12,8 @@ services:
     environment:
       # The authorized keys allowed to upload content
       AUTHORIZED_KEYS: |
-        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDAelBJ5bEq2TxSWxSIkXc0nhUrjpdxNzbfct4d77KayHlDWHketmUudeg99qB1eTP+tVMLnPcPeUucTZ1QGLZOyFufUlHNlMdW+fA0JN2N9ExLpKFL3pi10GbbgfHlMuqq0yvw3L27Yk/qSQQYgbmjfMefh7O8jFWjTdJ/gABS4g1+3LSHuE/7tLJ2xUZhjSK51MdLu7RbkaHz2DOZ79V1HQW5wYqos/rJwjcDXGC/IMRfvJpn9Tx/NOU8Q77CWCDMdfeuJ1TJo9/+VCzV3ccK0taTfi9cO9rJsgFcgmMcR1P8yvW8+im36OCLmnOeZ+8xtEa4oKiXd6/xd3s5NBg1qV2d83e5tzwG8mxVcOoUIbUfGPzhwRZVt6sYD1c8frkDmR58E26cZiNlNOXw6aP8kEK9cI1LJQYN0SjPc42OYAUlsm+Js3zRDqyImf2C3+fdM8PqT7tfJI9Hgi10WUbq3oWbeZnoghEW0qH33+R2b6l7w3ruV7LS2Lig/Ls5QKhN7QXwIHWbkSfdkgDRzsr8mWko27F0BULlJirWhn3qGBe5zattHuXlnpgyL5Pt5tzdzTEHFTnvHU/rx7n1RQqTRj9EHpI7biYZhnEs+Jjascz5Eo0K0wahLCKPy1/i6xMvLyt+56I4JSgVcps3DcVAyRWdwJuNV1q81RT8he5sAQ== example
+        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDjLENUYimjTZLNt97i9mcYmEmKHm1jUpBb+niqhxjBUVG03m9KkogNWxn+56Hq2d6vvt5qn2Jpj5AdkOJUzBsMIRFT+4mW7Elyew8sw3Dax/tA7xvu4ptnFvxnMg8GBxWlj5HCfgeE4xgiLPGF1xE5SByTHzFDGwGzX5oWy6EZw8D4EagveYMqHvIoLxZSVyrLnV6349QwJkvwTO1a8ZvFZkfw4dfIzhGi7C7y2eHO7LwXq7MhGQSlV/YQcrJegWXB6grWDba/a5FsQKr7ZveRZdwiewerTC/G11fHwYg7NzIGnR252h2WhvCBt1BcqS0YK9KONGdBgHAWKhGShBU3 key1
+        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDrW2mzKjKACkyTPKmApHKBah9/8+V240K8uw7St7Y927Hkx3EJA6gep8IEw5xDuQ0mUo0tgazJcWmLmuh8dftBqgAgYqk4K+sLMrP98RkIjljsRwm9U7WtnB+ByWRq6+w8xIPd/0nD32XRNyDDCPV40ccaNETrbbbWX0Md36Riy9BT0v2cTlE7kyE21yJrXO9T199v64Urry5p9ReCbs99lAoerduukwRVQM+jcyEQpsYrJxFr985TSHT2eODOwZnbSbdbVoWLdOY41u0+4q2yQWvRxI/BbMhKGMGaq9/D7FACuNMi8mM/cx56LHGH408NaBmbpwBoYHii6DmtGHPV key2
       # aws credentials in this example taken fron the host environment
       AWS_ACCESS_KEY_ID: "$AWS_ACCESS_KEY_ID"
       AWS_SECRET_ACCESS_KEY: "$AWS_SECRET_ACCESS_KEY"
@@ -25,5 +26,5 @@ services:
     secrets:
       - ssh_host_rsa_key
     ports:
-      - "1022:22"
+      - "10044:22"
       - "9001:9001"
