@@ -1,6 +1,8 @@
 # Changes for scp2s3
 
-## unreleased
+## 2019-03-06 / 0.0.2
+
+### Fix
 
 - fix an issue preventing multiple authorized keys
 
